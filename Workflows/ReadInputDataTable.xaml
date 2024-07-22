@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>887,1321</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>883.3333333333334,1364</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadInputDataTable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -86,14 +86,15 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadInputDataTable" sap:VirtualizedContainerService.HintSize="592,1256" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="Reads the input data using config and stores in the datatable variable." DisplayName="ReadInputDataTable" sap:VirtualizedContainerService.HintSize="592,1299.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="If : Reading the input data" sap:VirtualizedContainerService.HintSize="530,621" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="If : Reading the input data" sap:VirtualizedContainerService.HintSize="530,626" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -101,27 +102,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then : Load the io_transactiondata" sap:VirtualizedContainerService.HintSize="416,199" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Then : Load the io_transactiondata" sap:VirtualizedContainerService.HintSize="416,198.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range Workbook : Input" sap:VirtualizedContainerService.HintSize="354,111" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" SheetName="[in_Config(&quot;InputDataSheetName&quot;).ToString]" WorkbookPath="[in_Config(&quot;InputDataFilePath&quot;).toString]" />
+          <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range Workbook : Input" sap:VirtualizedContainerService.HintSize="354,110.66666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" SheetName="[in_Config(&quot;InputDataSheetName&quot;).ToString]" WorkbookPath="[in_Config(&quot;InputDataFilePath&quot;).toString]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else : data table is empty" sap:VirtualizedContainerService.HintSize="416,252" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Else : data table is empty" sap:VirtualizedContainerService.HintSize="416,255.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Data table is empty&quot;]" />
+          <ui:LogMessage DisplayName="Log Message : Data table is empty" sap:VirtualizedContainerService.HintSize="354,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Data table is empty&quot;]" />
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[io_dt_TransactionData.Rows.Count &gt;= in_TransactionNumber]" DisplayName="If : Checking the if the data rows are more than transaction number" sap:VirtualizedContainerService.HintSize="530,547" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[io_dt_TransactionData.Rows.Count &gt;= in_TransactionNumber]" DisplayName="If : Checking the if the data rows are more than transaction number" sap:VirtualizedContainerService.HintSize="530,554.6666666666666" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -129,13 +130,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then : Assign the transaction item" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Then : Assign the transaction item" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign : transaction item" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign : transaction item" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
             </Assign.To>
@@ -146,13 +147,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else : Say empty" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Else : Say empty" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign : transaction item nothing" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
             </Assign.To>

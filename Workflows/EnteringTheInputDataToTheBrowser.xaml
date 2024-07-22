@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="EnteringTheInputDataToTheBrowser" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="EnteringTheInputDataToTheBrowser" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1164,2390</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1164,3244.666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EnteringTheInputDataToTheBrowser_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -48,6 +48,7 @@
       <x:String>UiPath.UIAutomationNext.Models</x:String>
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -102,32 +103,36 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EnteringTheInputDataToTheBrowser" sap:VirtualizedContainerService.HintSize="1174,2325" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="Checks if the page is available , if its available then it will enters the username, password and server name. If the server available it will get the status otherwise it will throw the bsuiness exception." DisplayName="EnteringTheInputDataToTheBrowser" sap:VirtualizedContainerService.HintSize="1174,3180" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: botsdna.com/ServerAvailability/" sap:VirtualizedContainerService.HintSize="1112,2237" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: botsdna.com-ServerAvailability" sap:VirtualizedContainerService.HintSize="1112,3061.3333333333335" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="[NAppOpenMode.Never]" ScopeGuid="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1078,1997" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do : Check the server availability" sap:VirtualizedContainerService.HintSize="1078,2820" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NCheckState DisplayName="Check App State 'Server Availability'" sap:VirtualizedContainerService.HintSize="1016,1907" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Timeout="3" Version="V3">
+            <uix:NCheckState DisplayName="Check App State 'Server Availability'" sap:VirtualizedContainerService.HintSize="1016,2729.3333333333335" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Timeout="[Convert.ToDouble(in_Config(&quot;TimeOut&quot;).ToString)]" Version="V3">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="512,1625" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <Sequence DisplayName="Target appears : If the page appears" sap:VirtualizedContainerService.HintSize="512,2484" sap2010:WorkflowViewState.IdRef="Sequence_1">
                   <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="ServerIp" />
                     <Variable x:TypeArguments="scg:List(x:String)" Name="ServerNames" />
                     <Variable x:TypeArguments="x:String" Default="[(in_TransactionItem(&quot;Server Code&quot;).ToString)+&quot;-&quot;+(in_TransactionItem(&quot;IP&quot;).ToString).Replace(&quot;.&quot;,&quot;-&quot;)]" Name="CurrentServer" />
                   </Sequence.Variables>
@@ -136,7 +141,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Text="[in_TransactionItem(&quot;UID&quot;).ToString]" Version="V3">
+                  <ui:LogMessage DisplayName="Log Message : Page available" sap:VirtualizedContainerService.HintSize="450,178" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Browser is responsive&quot;]" />
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Text="[in_TransactionItem(&quot;UID&quot;).ToString]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://botsdna.com/ServerAvailability/" CVScreenId="f505db59-618f-4b43-b5e9-bb72e797ac60" CvElementArea="752, 352, 179, 24" CvType="InputBox" DesignTimeRectangle="753, 353, 177, 21" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='username' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='username' type='text' tag='INPUT' class='' aaname='' /&gt;" Guid="f7583926-f76d-49b4-97d7-4b76b3697075" InformativeScreenshot="ffab5ceae4454fe53cf42064bef8120e.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='botsdna.com/ServerAvailability/' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -147,7 +153,8 @@
                       </uix:TargetAnchorable>
                     </uix:NTypeInto.Target>
                   </uix:NTypeInto>
-                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Text="[in_TransactionItem(&quot;PWD&quot;).ToString]" Version="V3">
+                  <ui:LogMessage DisplayName="Log Message : Username" sap:VirtualizedContainerService.HintSize="450,178" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_TransactionItem(&quot;UID&quot;).ToString]" />
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="450,252" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Text="[in_TransactionItem(&quot;PWD&quot;).ToString]" Version="V3">
                     <uix:NTypeInto.Target>
                       <uix:TargetAnchorable BrowserURL="https://botsdna.com/ServerAvailability/" CVScreenId="1e21b45c-f58c-4ff0-b398-c31f7a7b1d1c" CvElementArea="752, 377, 180, 24" CvType="InputBox" DesignTimeRectangle="753, 378, 177, 21" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='password' tableRow='2' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='password' type='password' tag='INPUT' class='' aaname='' /&gt;" Guid="2ad95579-18b7-4925-8fc0-b3db83de4a07" InformativeScreenshot="03c83d411de09934f001a882650a2e16.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='botsdna.com/ServerAvailability/' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -158,7 +165,8 @@
                       </uix:TargetAnchorable>
                     </uix:NTypeInto.Target>
                   </uix:NTypeInto>
-                  <uix:NGetAttributeGeneric x:TypeArguments="scg:List(x:String)" Attribute="items" DisplayName="Get Attribute 'Server'" sap:VirtualizedContainerService.HintSize="450,239" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[ServerNames]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
+                  <ui:LogMessage DisplayName="Log Message : Password" sap:VirtualizedContainerService.HintSize="450,178" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[in_TransactionItem(&quot;PWD&quot;).ToString]" />
+                  <uix:NGetAttributeGeneric x:TypeArguments="scg:List(x:String)" Attribute="items" DisplayName="Get Attribute 'Server'" sap:VirtualizedContainerService.HintSize="450,242" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_1" Result="[ServerNames]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
                     <uix:NGetAttributeGeneric.Target>
                       <uix:TargetAnchorable BrowserURL="https://botsdna.com/ServerAvailability/" CVScreenId="47f2f9da-300a-4b50-a28c-719139336992" CvElementArea="751, 401, 181, 22" CvType="InputBox" DesignTimeRectangle="753, 403, 179, 19" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='name' tableRow='3' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='name' type='' tag='SELECT' class='' aaname='' /&gt;" Guid="718b66d1-3e69-4a7a-943a-557a3d801905" InformativeScreenshot="feccfbbb60cfecc8c6fe60482ba91b79.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='botsdna.com/ServerAvailability/' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                         <uix:TargetAnchorable.Anchors>
@@ -169,15 +177,15 @@
                       </uix:TargetAnchorable>
                     </uix:NGetAttributeGeneric.Target>
                   </uix:NGetAttributeGeneric>
-                  <If Condition="[ServerNames.Contains(CurrentServer)]" sap:VirtualizedContainerService.HintSize="450,796" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[ServerNames.Contains(CurrentServer)]" DisplayName="If : The server name present in the available server" sap:VirtualizedContainerService.HintSize="450,1113.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,432" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <Sequence DisplayName="Then : Put the server name and click start" sap:VirtualizedContainerService.HintSize="416,746.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uix:NSelectItem DisplayName="Select Item 'Server'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[CurrentServer]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
+                        <uix:NSelectItem DisplayName="Select Item 'Server'" sap:VirtualizedContainerService.HintSize="354,190.66666666666666" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[CurrentServer]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
                           <uix:NSelectItem.Items>
                             <scg:List x:TypeArguments="x:String" Capacity="36">
                               <x:String>----Select Server Name----</x:String>
@@ -229,12 +237,13 @@
                           </uix:NSelectItem.Target>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NSelectItem>
-                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Start Server'" sap:VirtualizedContainerService.HintSize="354,57" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
+                        <ui:LogMessage DisplayName="Log Messagev: Server" sap:VirtualizedContainerService.HintSize="354,178" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[CurrentServer]" />
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Start Server'" sap:VirtualizedContainerService.HintSize="354,57.333333333333336" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
                           <uix:NClick.Target>
                             <uix:TargetAnchorable BrowserURL="https://botsdna.com/ServerAvailability/" CVScreenId="45cecd6f-8568-4285-98c1-435d91133945" CvElementArea="751, 424, 90, 25" CvTextArea="760, 429, 73, 13" CvTextArgument="Start Server" CvType="Button" DesignTimeRectangle="753, 426, 87, 21" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='button' tag='INPUT' class='' aaname='Start Server' check:text='Start Server' /&gt;" Guid="0b41e438-264a-4c96-ac4f-a176e9059acb" InformativeScreenshot="c884ac340bab2c712b1bac99a5ca0e66.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='botsdna.com/ServerAvailability/' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                           </uix:NClick.Target>
@@ -255,7 +264,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </uix:NClick>
-                        <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="text" DisplayName="Get Attribute 'TS-202-32-5Offline'" sap:VirtualizedContainerService.HintSize="354,230" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" Result="[GlobalVariablesNamespace.GlobalVariables.Status]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
+                        <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="text" DisplayName="Get Attribute 'TS-202-32-5Offline'" sap:VirtualizedContainerService.HintSize="354,232.66666666666666" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" Result="[GlobalVariablesNamespace.GlobalVariables.Status]" ScopeIdentifier="a3b70f0d-e8a1-4d55-8b47-4b175cd2cda0" Version="V3">
                           <uix:NGetAttributeGeneric.Target>
                             <uix:TargetAnchorable BrowserURL="https://botsdna.com/ServerAvailability/" DesignTimeRectangle="16, 504, 1584, 94" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl id='status' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='status' tag='DIV' type='' class='' aaname='TS-202-32-5Offline' check:innerText='TS-202-32-5&amp;#xD;&amp;#xA;Offline' /&gt;" Guid="654cc1ed-350a-4567-9bf4-b7e1cb1ca7a3" InformativeScreenshot="288273054d45b931ae16467ff2518945.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='botsdna.com/ServerAvailability/' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
                           </uix:NGetAttributeGeneric.Target>
@@ -269,26 +278,27 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,201" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence DisplayName="Else : Say server not found" sap:VirtualizedContainerService.HintSize="416,202" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Throw Exception="[new BusinessRuleException(&quot;Server not found&quot;)]" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                        <Throw DisplayName="Throw : Business exception" Exception="[new BusinessRuleException(in_Config(&quot;BusinessException&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="354,114" sap2010:WorkflowViewState.IdRef="Throw_2" />
                       </Sequence>
                     </If.Else>
                   </If>
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Target does not appear : I the page does not appear" sap:VirtualizedContainerService.HintSize="450,385.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new SystemException(&quot;Browser not loading&quot;)]" sap:VirtualizedContainerService.HintSize="388,115" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <ui:LogMessage DisplayName="Log Message : Page unavailable" sap:VirtualizedContainerService.HintSize="388,178" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Browser is not responsive&quot;]" />
+                  <Throw DisplayName="Throw : System exception" Exception="[new SystemException(in_Config(&quot;SystemException&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="388,116.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </uix:NCheckState.IfNotExists>
               <uix:NCheckState.Target>
